@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+set -e # Bail early
+#set -x # Very verbose
+
+fn_exists()
+{
+  # Credit: http://stackoverflow.com/questions/85880/determine-if-a-function-exists-in-bash
+  [ `type -t $1`"" == 'function' ]
+}
+
+a() {
+  echo "a"
+}
+
+b()
+{
+  echo "b"
+}
+
+c() 
+{
+  echo "c"
+}
+
+while (( "$#" )); do
+  if ! fn_exists $1; then
+     echo "Undefined task: $1.  Exiting"
+     exit 2
+  fi
+
+  $1
+  shift
+done
+

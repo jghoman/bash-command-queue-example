@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -e # Bail early
+set -x # Very verbose
+
+./bash-command-queue-example a b c
+
+./bash-command-queue-example b a c a c a b a c
+
+./bash-command-queue-example b b a a
+
+./bash-command-queue-example a a a b b b c a ca
+
+./bash-command-queue-example a b c z
